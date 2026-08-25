@@ -1,0 +1,1 @@
+import Navbar from '@/components/Navbar'; import Footer from '@/components/Footer'; import CalculatorTool from '@/components/calculators/CalculatorTool'; export default function Page(){return <><Navbar/><CalculatorTool type="affordability"/><Footer/></>}

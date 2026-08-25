@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; overflow-x: hidden; background: #f6f4ed; color: #13201d; font-family: Arial, Helvetica, sans-serif; }
+a, button, input, select { outline-offset: 3px; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid #155f4b; }
+button, select { cursor: pointer; }
+.font-serif { font-family: Georgia, 'Times New Roman', serif; }
+.hero { background: radial-gradient(circle at 82% 15%, rgba(200,138,61,.22), transparent 29%), linear-gradient(145deg,#f6f4ed 45%,#e3ebe3); }
+.eyebrow { color:#155f4b; font-size:11px; font-weight:800; letter-spacing:.2em; }
+.section-title { font-family:Georgia,'Times New Roman',serif; font-size:clamp(2.5rem,5vw,4.5rem); line-height:.98; letter-spacing:-.04em; }
+.section-title em { color:#155f4b; font-weight:400; }
+.search-panel { border:1px solid rgba(19,32,29,.12); border-radius:28px; background:rgba(255,255,255,.9); padding:22px; box-shadow:0 24px 70px rgba(19,32,29,.13); backdrop-filter:blur(16px); }
+.mode-pill span { display:block; border-radius:999px; padding:8px 20px; font-size:13px; font-weight:700; transition:.2s; }
+.field > span { display:block; margin-bottom:4px; color:rgba(19,32,29,.5); font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+.field input,.field select { width:100%; height:38px; border:0; border-bottom:1px solid rgba(19,32,29,.14); background:transparent; padding:0 4px; color:#13201d; font-size:14px; }
+.field input::placeholder { color:rgba(19,32,29,.38); }
+.btn-dark,.btn-green,.btn-outline,.btn-light,.btn-ghost { display:inline-flex; min-height:44px; align-items:center; justify-content:center; gap:8px; border-radius:999px; padding:11px 20px; font-size:13px; font-weight:800; transition:.2s; }
+.btn-dark { background:#13201d; color:#fff; }.btn-dark:hover{background:#155f4b}.btn-green{border:1px solid #155f4b;background:#155f4b;color:white}.btn-green:hover{background:#0e4637}.btn-outline{border:1px solid rgba(19,32,29,.2);background:transparent;color:#13201d}.btn-outline:hover{border-color:#155f4b}.btn-light{background:#f6f4ed;color:#13201d}.btn-ghost{border:1px solid rgba(19,32,29,.4);color:#13201d}
+.status{border-radius:999px;padding:7px 14px}.buy{background:#d8f7df;color:#155f4b}.wait{background:#fff0cb;color:#805519}.avoid{background:#fee0db;color:#9c3428}
+.tool-card{display:flex;gap:18px;min-height:190px;border:1px solid rgba(19,32,29,.1);border-radius:22px;padding:24px;background:#faf9f5;transition:.2s}.tool-card:hover{border-color:#155f4b;transform:translateY(-3px);box-shadow:0 18px 50px rgba(19,32,29,.08)}
+.icon-box{display:flex;height:44px;width:44px;align-items:center;justify-content:center;border-radius:13px;background:#dce7df;color:#155f4b}.icon-box svg{width:20px}
+.seller-grid{display:grid;overflow:hidden;border-radius:32px;background:#15352c}@media(min-width:900px){.seller-grid{grid-template-columns:1fr 1fr}}
+.calc-field span{display:block;margin-bottom:6px;color:rgba(19,32,29,.65);font-size:12px;font-weight:700}.calc-field input{height:44px;width:100%;border:1px solid rgba(19,32,29,.15);border-radius:12px;padding:0 12px;outline:none}.calc-field input:focus{border-color:#155f4b}.calc-field small{color:#9c3428;font-size:11px}
+@media(max-width:640px){.search-panel{border-radius:20px;padding:16px}.section-title{font-size:2.65rem}}

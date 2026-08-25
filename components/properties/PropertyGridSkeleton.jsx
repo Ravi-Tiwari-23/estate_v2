@@ -1,0 +1,1 @@
+export default function PropertyGridSkeleton(){return <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">{[1,2,3,4,5,6].map((id)=><div key={id} className="h-[454px] animate-pulse rounded-[24px] bg-white"/>)}</div>}

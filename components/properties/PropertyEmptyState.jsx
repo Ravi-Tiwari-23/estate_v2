@@ -1,0 +1,2 @@
+import { SearchX } from 'lucide-react';
+export default function PropertyEmptyState({onClear}){return <div className="rounded-[28px] border border-dashed border-ink/20 bg-white px-6 py-16 text-center"><span className="icon-box mx-auto"><SearchX/></span><h2 className="mt-5 font-serif text-3xl">No properties match these filters.</h2><p className="mx-auto mt-3 max-w-md leading-7 text-ink/55">Try changing your budget, location or property type to see more homes.</p><button className="btn-dark mt-7" onClick={onClear}>Clear filters</button></div>}
