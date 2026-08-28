@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+const source=await readFile(new URL('../lib/calculators/riskAnalysis.js',import.meta.url),'utf8');
+const {calculateRiskAnalysis}=await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
+const base={financial:{monthlyIncome:150000,coApplicantIncome:0,existingEmi:15000,householdExpenses:45000,otherCommitments:10000,currentRent:0,totalSavings:3000000,emergencyReserve:600000},property:{listingPrice:6500000,trueCost:7000000},financing:{mode:'LOAN',loanAmount:4500000,downPayment:2500000,interestRate:8.5,tenureYears:20},rental:{enabled:false,monthlyRent:0,vacancyRate:5,annualExpenses:0},assumptions:{mildRateIncrease:1,severeRateIncrease:2,mildIncomeDrop:5,severeIncomeDrop:10,mildExpenseIncrease:10,severeExpenseIncrease:20,mildVacancyIncrease:5,severeVacancyIncrease:10}};
+const calc=x=>calculateRiskAnalysis(x,{skipMitigations:true});
+const high=calc({...base,financial:{...base.financial,monthlyIncome:100000,existingEmi:25000,householdExpenses:30000,otherCommitments:20000},financing:{...base.financing,loanAmount:5200000}});assert(high.metrics.monthlyBalance<0);assert(high.metrics.foir>60);assert(high.overall.score>=70);
+const debtA=calc(base),debtB=calc({...base,financing:{...base.financing,loanAmount:5500000}});assert(debtB.pillars.debt.normalizedPercentage>=debtA.pillars.debt.normalizedPercentage);
+const liquidA=calc(base),liquidB=calc({...base,financial:{...base.financial,totalSavings:2600000,emergencyReserve:100000}});assert(liquidB.pillars.liquidity.normalizedPercentage>=liquidA.pillars.liquidity.normalizedPercentage);
+const costB=calc({...base,property:{...base.property,trueCost:8000000}});assert(costB.pillars.affordability.normalizedPercentage>=debtA.pillars.affordability.normalizedPercentage);
+const rentalA=calc({...base,rental:{enabled:true,monthlyRent:35000,vacancyRate:5,annualExpenses:36000}}),rentalB=calc({...base,rental:{enabled:true,monthlyRent:35000,vacancyRate:25,annualExpenses:36000}});assert(rentalB.pillars.rental.normalizedPercentage>=rentalA.pillars.rental.normalizedPercentage);
+const cash=calc({...base,financial:{...base.financial,totalSavings:8500000,emergencyReserve:1000000},property:{listingPrice:5700000,trueCost:6000000},financing:{mode:'CASH',loanAmount:0,downPayment:0,interestRate:0,tenureYears:0}});assert.equal(cash.pillars.debt.applicable,false);assert(cash.overall.score<=45);
+console.log('Risk analysis cases and monotonic invariants passed.');

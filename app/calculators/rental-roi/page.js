@@ -1,1 +1,7 @@
-import Navbar from '@/components/Navbar'; import Footer from '@/components/Footer'; import CalculatorTool from '@/components/calculators/CalculatorTool'; export default function Page(){return <><Navbar/><CalculatorTool type="rental-roi"/><Footer/></>}
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import RentalInvestmentCalculator from '@/components/calculators/RentalInvestmentCalculator';
+
+export default function Page(){
+  return <><Navbar/><RentalInvestmentCalculator/><Footer/></>;
+}

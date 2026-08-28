@@ -45,7 +45,7 @@ export default function EmiPage() {
 
       <section className="mt-5 grid gap-5 lg:grid-cols-[.42fr_.58fr]">
         <form className="rounded-xl border border-ink/10 bg-white p-4 shadow-sm md:p-5"><div className="flex items-center gap-3"><span className="grid h-8 w-8 place-items-center rounded-md bg-[#eef4ed] text-green"><Calculator size={18}/></span><h2 className="font-serif text-lg">Loan Details</h2></div><div className="mt-5 space-y-5">
-          <RangeField label="Property Price" min={1000000} max={50000000} step={100000} value={price} onChange={(value)=>setField('propertyPrice',value)} display={money(price)} error={errors.propertyPrice?.message}/>
+          <RangeField label="Property Price" min={100000} max={50000000} step={100000} value={price} onChange={(value)=>setField('propertyPrice',value)} display={money(price)} error={errors.propertyPrice?.message}/>
           <RangeField label="Down Payment" min={0} max={Math.max(price, 1)} step={100000} value={downPayment} onChange={(value)=>setField('downPayment',value)} display={money(downPayment)} error={errors.downPayment?.message}/>
           <div className="rounded-lg bg-[#eff6ee] px-3 py-2.5"><div className="flex items-center justify-between gap-3 text-[11px]"><span className="flex items-center gap-2 font-bold text-green"><House size={15}/> Estimated Loan Amount</span><b>{money(loanAmount)}</b></div></div>
           <RangeField label="Interest Rate (% p.a.)" min={5} max={15} step={0.1} value={interestRate} onChange={(value)=>setField('interestRate',value)} display={`${interestRate.toFixed(2)} %`} error={errors.interestRate?.message}/>
